@@ -103,10 +103,10 @@ f f e 4 e 1 f 4 4 f f . .
 `</field></shadow></value></block></statement><next><block type="controls_if" id="ImJK|t!X^ttOAB#[7A0U"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare" id=";,Z3},(K,r{HS[],lb30"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get" id="~EE1NaePXc/V58ESM!BZ"><field name="VAR" id="DpS2Xa}=@Y9;M=|qr0^x">Skin</field></block></value><value name="B"><shadow type="math_number" id="^Kst[=pfpsZ+Fwqq_-YB"><field name="NUM">2</field></shadow></value></block></value><statement name="DO0"><block type="spritesetimage" id="QSOM$k#)2P|){jy4uV`)"><value name="sprite"><block type="variables_get" id="`-+D18k`rjPDv6M5Q{s4"><field name="VAR" id="s$Zke$3TmU~G[T.2mf-{">Runner_blue</field></block></value><value name="img"><shadow type="screen_image_picker" id="gRQ]o=u52+~J(ggq298W"><field name="img">img`
 . . . . . . . . . . . . . . . . 
 . . . . . . . f f f f . . . . . 
-. . . . . . f . . . . f . . . . 
-. . . . . . f . f . f f . . . . 
-. . . . . . f . f . f f . . . . 
-. . . . . . f . . . . f . . . . 
+. . . . . . f 1 1 1 1 f . . . . 
+. . . . . . f 1 f 1 f f . . . . 
+. . . . . . f 1 f 1 f f . . . . 
+. . . . . . f 1 1 1 1 f . . . . 
 . . . . . . . f f f f . . . . . 
 . . . . . . . . f . . . . . . . 
 . . . . . . . f f f . . . . . . 
@@ -154,10 +154,10 @@ f f f f f e f f f f c c f
 `</field></shadow></value></block></statement><next><block type="controls_if" id="ipx)z)4F:9;^dAHt107/"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare" id="qVl(+(OW+037L5kCsFyQ"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get" id="NF#SFNj7_:dQ|*GTC1TP"><field name="VAR" id="DpS2Xa}=@Y9;M=|qr0^x">Skin</field></block></value><value name="B"><shadow type="math_number" id="Tq?6[=j6}/U*JSK8GFBa"><field name="NUM">2</field></shadow></value></block></value><statement name="DO0"><block type="spritesetimage" id="RqAWAIDha]fX5=lhk_r4"><value name="sprite"><block type="variables_get" id="8xho%GDz``#q:h.WI*~q"><field name="VAR" id="s$Zke$3TmU~G[T.2mf-{">Runner_blue</field></block></value><value name="img"><shadow type="screen_image_picker" id="gvK=#D^U#x)3TtCkge|;"><field name="img">img`
 . . . . . . . . . . . . . . . . 
 . . . . . . f f f f . . . . . . 
-. . . . . f . . . . f . . . . . 
-. . . . . f f . f . f . . . . . 
-. . . . . f f . f . f . . . . . 
-. . . . . f . . . . f . . . . . 
+. . . . . f 1 1 1 1 f . . . . . 
+. . . . . f f 1 f 1 f . . . . . 
+. . . . . f f 1 f 1 f . . . . . 
+. . . . . f 1 1 1 1 f . . . . . 
 . . . . . . f f f f . . . . . . 
 . . . . . . . . f . . . . . . . 
 . . . . . . . f f f . . . . . . 
@@ -205,10 +205,10 @@ f b b f f f e e e e f f f b b f
 `</field></shadow></value></block></statement><next><block type="controls_if" id="TakOrfHy[f:%Z.b4d!#}"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare" id="5^O4lnD~5_f3,$Ks7?Ty"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get" id="g!Ksr1]J[G*HW0(aP$P1"><field name="VAR" id="DpS2Xa}=@Y9;M=|qr0^x">Skin</field></block></value><value name="B"><shadow type="math_number" id="|ME]dr`$=.T/%nl1j74z"><field name="NUM">2</field></shadow></value></block></value><statement name="DO0"><block type="spritesetimage" id="ldtS:3cMejG7vDUCniR-"><value name="sprite"><block type="variables_get" id="RtTvG%D^WF[88)^%fF+4"><field name="VAR" id="s$Zke$3TmU~G[T.2mf-{">Runner_blue</field></block></value><value name="img"><shadow type="screen_image_picker" id="=[O;l$*.0?/OSoo~+6bo"><field name="img">img`
 . . . . . . . . . . . . . . . . 
 . . . . f f f f f f f f f . . . 
-. . . f . . . . . . . . . f . . 
-. . . f . f . . . . . f . f . . 
-. . . f . f . . . . . f . f . . 
-. . . f . . . . . . . . . f . . 
+. . . f 1 1 1 1 1 1 1 1 1 f . . 
+. . . f 1 f 1 1 1 1 1 f 1 f . . 
+. . . f 1 f 1 1 1 1 1 f 1 f . . 
+. . . f 1 1 1 1 1 1 1 1 1 f . . 
 . . . . f f f f f f f f f . . . 
 . . . . . . . . f . . . . . . . 
 . . . . . . . f f f . . . . . . 
