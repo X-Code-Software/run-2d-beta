@@ -1,11 +1,47 @@
-info.onCountdownEnd(function () {
-    game.over(false, effects.splatter)
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile16, function (sprite, location) {
+    Level += 1
+    if (Level == 1) {
+        tiles.setTilemap(tiles.createTilemap(hex`140010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004010101030000000000000000000000000900000000000000000000050101010101070005010e0e0e0e0e0e0e0e0e0e0a06060606060b0e0a06`, img`
+            . . . . . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . . . . . 
+            . . 2 2 2 2 2 . . . . . . . . . . . . . 
+            . . . . . . . . . . 2 2 2 2 2 2 2 . 2 2 
+            . . . . . . . . . . 2 2 2 2 2 2 2 . 2 2 
+            `, [myTiles.transparency16,myTiles.tile4,myTiles.tile1,myTiles.tile2,myTiles.tile8,myTiles.tile3,myTiles.tile6,myTiles.tile9,myTiles.tile15,myTiles.tile16,myTiles.tile5,myTiles.tile7,myTiles.tile10,myTiles.tile11,myTiles.tile12,myTiles.tile13,myTiles.tile14], TileScale.Sixteen))
+        scene.cameraShake(4, 500)
+        Runner_blue.setPosition(35, 79)
+    }
 })
-let Skin = 0
+info.onCountdownEnd(function () {
+    game.over(false, effects.melt)
+})
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
+    let enemy_1: Sprite = null
+    enemy_1.setPosition(84, 95)
+    info.changeLifeBy(-1)
+})
+info.onLifeZero(function () {
+    game.over(false, effects.melt)
+})
 let jump_limit = 0
+let Level = 0
+let Runner_blue: Sprite = null
+info.setLife(3)
+let Skin = 0
 info.startCountdown(300)
 scene.setBackgroundColor(9)
-tiles.setTilemap(tiles.createTilemap(hex`140010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000401010300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000040101010103000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000020000000002000000000000000000000200000000000000000000000000000000000000000000000000000000000000000000000000000000000401010103000000000800000000000000000000000000000000000005060700000000000000000000000000000000050606060700000000000101010101010101010106060606060101010101`, img`
+tiles.setTilemap(tiles.createTilemap(hex`140010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000401010300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000040101010103000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000020000000002000000000000000000000200000000000000000000000000000000000000000000000000000000000000000000000000000000000401010103000000000800000000000000000000000000000000000005060700000000000000000000000000000000050606060700000000090101010101010101010106060606060101010101`, img`
     . . . . . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . . . . . 
@@ -22,8 +58,8 @@ tiles.setTilemap(tiles.createTilemap(hex`140010000000000000000000000000000000000
     . . . . . . . . . . . 2 2 2 . . . . . . 
     . . . . . . . . . . 2 2 2 2 2 . . . . . 
     2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
-    `, [myTiles.transparency16,myTiles.tile4,myTiles.tile1,myTiles.tile2,myTiles.tile8,myTiles.tile3,myTiles.tile6,myTiles.tile9,myTiles.tile15], TileScale.Sixteen))
-let Runner_blue = sprites.create(img`
+    `, [myTiles.transparency16,myTiles.tile4,myTiles.tile1,myTiles.tile2,myTiles.tile8,myTiles.tile3,myTiles.tile6,myTiles.tile9,myTiles.tile15,myTiles.tile16], TileScale.Sixteen))
+Runner_blue = sprites.create(img`
     . . . f f f f f . . . . . 
     . f f f f f f f f f . . . 
     . f f f f f f c f f f . . 
@@ -53,7 +89,7 @@ game.onUpdate(function () {
         }
     }
 })
-game.onUpdateInterval(2000, function () {
+game.onUpdateInterval(1000, function () {
     if (controller.up.isPressed()) {
         Skin += 1
         console.log("Skin changed")
@@ -109,12 +145,12 @@ game.onUpdateInterval(100, function () {
         if (Skin == 2) {
             Runner_blue.setImage(img`
                 . . . . . . . . . . . . . . . . 
-                . . . . . . f f f f f . . . . . 
-                . . . . . f . . . . . f . . . . 
-                . . . . . f . f . f . f . . . . 
-                . . . . . f . f . f . f . . . . 
-                . . . . . f . . . . . f . . . . 
-                . . . . . . f f f f f . . . . . 
+                . . . . . . . f f f f . . . . . 
+                . . . . . . f . . . . f . . . . 
+                . . . . . . f . f . f f . . . . 
+                . . . . . . f . f . f f . . . . 
+                . . . . . . f . . . . f . . . . 
+                . . . . . . . f f f f . . . . . 
                 . . . . . . . . f . . . . . . . 
                 . . . . . . . f f f . . . . . . 
                 . . . . . . . f f f . . . . . . 
@@ -171,21 +207,21 @@ game.onUpdateInterval(100, function () {
         if (Skin == 2) {
             Runner_blue.setImage(img`
                 . . . . . . . . . . . . . . . . 
-                . . . . f f f f f f f f f . . . 
-                . . . f . . . . . . . . . f . . 
-                . . . f . f . . . . . f . f . . 
-                . . . f . f . . . . . f . f . . 
-                . . . f . . . . . . . . . f . . 
-                . . . . f f f f f f f f f . . . 
+                . . . . . . f f f f . . . . . . 
+                . . . . . f . . . . f . . . . . 
+                . . . . . f f . f . f . . . . . 
+                . . . . . f f . f . f . . . . . 
+                . . . . . f . . . . f . . . . . 
+                . . . . . . f f f f . . . . . . 
                 . . . . . . . . f . . . . . . . 
                 . . . . . . . f f f . . . . . . 
-                . . . . . . f . f . f . . . . . 
-                . . . . . f . . f . . f . . . . 
+                . . . . . . . f f f . . . . . . 
+                . . . . . . . f f f . . . . . . 
                 . . . . . . . . f . . . . . . . 
-                . . . . . . . f . f . . . . . . 
-                . . . . . . f . . . f . . . . . 
-                . . . . . . f . . . f . . . . . 
-                . . . . . f f . . . f f . . . . 
+                . . . . . . . . f . . . . . . . 
+                . . . . . . . . f . . . . . . . 
+                . . . . . . . . f . . . . . . . 
+                . . . . . . . . f . . . . . . . 
                 `)
         }
     }
