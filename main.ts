@@ -53,20 +53,14 @@ game.onUpdate(function () {
         }
     }
 })
-game.onUpdateInterval(500, function () {
-    if (Skin == 1 && controller.down.isPressed()) {
-        Skin = 0
-        console.log("Skin changed")
-    }
-    if (Skin == 0 && controller.down.isPressed()) {
-        Skin = 1
-        console.log("Skin changed")
-    }
+game.onUpdateInterval(2000, function () {
     if (controller.up.isPressed()) {
         Skin += 1
+        console.log("Skin changed")
     }
     if (controller.down.isPressed()) {
         Skin += -1
+        console.log("Skin changed")
     }
 })
 game.onUpdateInterval(100, function () {
@@ -91,7 +85,8 @@ game.onUpdateInterval(100, function () {
                 . f f f f f f f f f f . . 
                 . . f f . . . f f f . . . 
                 `)
-        } else {
+        }
+        if (Skin == 1) {
             Runner_blue.setImage(img`
                 . . . . . . f f f f 4 4 f . . . 
                 . . . . f f b f 5 4 5 5 4 f . . 
@@ -109,6 +104,26 @@ game.onUpdateInterval(100, function () {
                 . . . . f b e e b d b d b f . . 
                 . . . . f f d 1 d 1 d 1 f f . . 
                 . . . . . . f f b b f f . . . . 
+                `)
+        }
+        if (Skin == 2) {
+            Runner_blue.setImage(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . f f f f f . . . . . 
+                . . . . . f . . . . . f . . . . 
+                . . . . . f . f . f . f . . . . 
+                . . . . . f . f . f . f . . . . 
+                . . . . . f . . . . . f . . . . 
+                . . . . . . f f f f f . . . . . 
+                . . . . . . . . f . . . . . . . 
+                . . . . . . . f f f . . . . . . 
+                . . . . . . . f f f . . . . . . 
+                . . . . . . . f f f . . . . . . 
+                . . . . . . . . f . . . . . . . 
+                . . . . . . . . f . . . . . . . 
+                . . . . . . . . f . . . . . . . 
+                . . . . . . . . f . . . . . . . 
+                . . . . . . . . f . . . . . . . 
                 `)
         }
     }
@@ -132,7 +147,8 @@ game.onUpdateInterval(100, function () {
                 . . f f f f f f f f f f . 
                 . . . f f f . . . f f . . 
                 `)
-        } else {
+        }
+        if (Skin == 1) {
             Runner_blue.setImage(img`
                 . . . f 4 4 f f f f . . . . . . 
                 . . f 4 5 5 4 5 f b f f . . . . 
@@ -150,6 +166,26 @@ game.onUpdateInterval(100, function () {
                 . . f b d b d b e e b f . . . . 
                 . . f f 1 d 1 d 1 d f f . . . . 
                 . . . . f f b b f f . . . . . . 
+                `)
+        }
+        if (Skin == 2) {
+            Runner_blue.setImage(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . f f f f f f f f f . . . 
+                . . . f . . . . . . . . . f . . 
+                . . . f . f . . . . . f . f . . 
+                . . . f . f . . . . . f . f . . 
+                . . . f . . . . . . . . . f . . 
+                . . . . f f f f f f f f f . . . 
+                . . . . . . . . f . . . . . . . 
+                . . . . . . . f f f . . . . . . 
+                . . . . . . f . f . f . . . . . 
+                . . . . . f . . f . . f . . . . 
+                . . . . . . . . f . . . . . . . 
+                . . . . . . . f . f . . . . . . 
+                . . . . . . f . . . f . . . . . 
+                . . . . . . f . . . f . . . . . 
+                . . . . . f f . . . f f . . . . 
                 `)
         }
     }
@@ -178,7 +214,8 @@ game.onUpdateInterval(100, function () {
                 . . . f f f f f f . . . . 
                 . . . . f f f . . . . . . 
                 `)
-        } else {
+        }
+        if (Skin == 2) {
             Runner_blue.setImage(img`
                 . . . . . f f 4 4 f f . . . . . 
                 . . . . f 5 4 5 5 4 5 f . . . . 
@@ -196,6 +233,26 @@ game.onUpdateInterval(100, function () {
                 . . e f b d b d b d b b f e . . 
                 . . . f f 1 d 1 d 1 d f f . . . 
                 . . . . . f f b b f f . . . . . 
+                `)
+        }
+        if (Skin == 2) {
+            Runner_blue.setImage(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . f f f f f f f f f . . . 
+                . . . f . . . . . . . . . f . . 
+                . . . f . f . . . . . f . f . . 
+                . . . f . f . . . . . f . f . . 
+                . . . f . . . . . . . . . f . . 
+                . . . . f f f f f f f f f . . . 
+                . . . . . . . . f . . . . . . . 
+                . . . . . . . f f f . . . . . . 
+                . . . . . . f . f . f . . . . . 
+                . . . . . f . . f . . f . . . . 
+                . . . . . . . . f . . . . . . . 
+                . . . . . . . f . f . . . . . . 
+                . . . . . . f . . . f . . . . . 
+                . . . . . . f . . . f . . . . . 
+                . . . . . f f . . . f f . . . . 
                 `)
         }
     }
