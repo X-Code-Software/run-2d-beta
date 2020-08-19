@@ -155,7 +155,7 @@ let Skin = 0
 let jump_limit = 0
 let Level = 0
 let Runner_blue: Sprite = null
-game.showLongText("Welcome to the Run 2D Beta v 0.0.1", DialogLayout.Full)
+game.showLongText("Welcome to the Run 2D Beta v 0.1.1", DialogLayout.Full)
 info.setLife(5)
 info.startCountdown(300)
 scene.setBackgroundColor(9)
