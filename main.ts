@@ -3,8 +3,34 @@ enum ActionKind {
     Idle,
     Jumping
 }
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile2, function (sprite, location) {
+    Runner_blue.y += -1
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile3, function (sprite, location) {
+    Runner_blue.y += -1
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile4, function (sprite, location) {
+    Runner_blue.y += -1
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile8, function (sprite, location) {
+    Runner_blue.y += -1
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile7, function (sprite, location) {
+    Runner_blue.y += 1
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile6, function (sprite, location) {
+    Runner_blue.y += 1
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile1, function (sprite, location) {
+    Runner_blue.y += -1
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile5, function (sprite, location) {
+    Runner_blue.y += 1
+})
+let Runner_blue: Sprite = null
+let jump_limit = 0
 scene.setBackgroundColor(9)
-tiles.setTilemap(tiles.createTilemap(hex`0a0008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001010101010101010101`, img`
+tiles.setTilemap(tiles.createTilemap(hex`0a0008000000000000000000000500000000080207000005080207000006000000050006000000000000000500000804010101030705000000060606060600050000000000000000000501010101010101010101`, img`
     . . . . . . . . . . 
     . . . . . . . . . . 
     . . . . . . . . . . 
@@ -13,8 +39,8 @@ tiles.setTilemap(tiles.createTilemap(hex`0a0008000000000000000000000000000000000
     . . . . . . . . . . 
     . . . . . . . . . . 
     . . . . . . . . . . 
-    `, [myTiles.transparency16,myTiles.tile4], TileScale.Sixteen))
-let Runner_blue = sprites.create(img`
+    `, [myTiles.transparency16,myTiles.tile4,myTiles.tile1,myTiles.tile2,myTiles.tile8,myTiles.tile10,myTiles.tile12,myTiles.tile13,myTiles.tile14], TileScale.Sixteen))
+Runner_blue = sprites.create(img`
     . . . f f f f f . . . . . 
     . f f f f f f f f f . . . 
     . f f f f f f c f f f . . 
@@ -32,7 +58,9 @@ let Runner_blue = sprites.create(img`
     . . . f f f f f f . . . . 
     . . . . f f f . . . . . . 
     `, SpriteKind.Player)
-Runner_blue.setFlag(SpriteFlag.StayInScreen, true)
+Runner_blue.setPosition(16, 95)
+scene.cameraFollowSprite(Runner_blue)
+Runner_blue.setFlag(SpriteFlag.StayInScreen, false)
 controller.moveSprite(Runner_blue, 75, 0)
 game.onUpdateInterval(100, function () {
     if (controller.right.isPressed()) {
@@ -78,7 +106,7 @@ game.onUpdateInterval(100, function () {
     if (controller.A.isPressed()) {
         Runner_blue.setVelocity(0, -150)
     } else {
-        Runner_blue.setVelocity(0, 150)
+        Runner_blue.setVelocity(0, 100)
     }
     if (!(controller.left.isPressed() || controller.right.isPressed())) {
         Runner_blue.setImage(img`
@@ -99,5 +127,8 @@ game.onUpdateInterval(100, function () {
             . . . f f f f f f . . . . 
             . . . . f f f . . . . . . 
             `)
+    }
+    if (jump_limit <= 1) {
+    	
     }
 })
