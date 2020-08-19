@@ -3,44 +3,27 @@ enum ActionKind {
     Idle,
     Jumping
 }
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile2, function (sprite, location) {
-    Runner_blue.y += -1
-})
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile3, function (sprite, location) {
-    Runner_blue.y += -1
-})
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile4, function (sprite, location) {
-    Runner_blue.y += -1
-})
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile8, function (sprite, location) {
-    Runner_blue.y += -1
-})
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile7, function (sprite, location) {
-    Runner_blue.y += 1
-})
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile6, function (sprite, location) {
-    Runner_blue.y += 1
-})
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile1, function (sprite, location) {
-    Runner_blue.y += -1
-})
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile5, function (sprite, location) {
-    Runner_blue.y += 1
-})
-let Runner_blue: Sprite = null
 let jump_limit = 0
 scene.setBackgroundColor(9)
-tiles.setTilemap(tiles.createTilemap(hex`0a0008000000000000000000000500000000080207000005080207000006000000050006000000000000000500000804010101030705000000060606060600050000000000000000000501010101010101010101`, img`
-    . . . . . . . . . . 
-    . . . . . . . . . . 
-    . . . . . . . . . . 
-    . . . . . . . . . . 
-    . . . . . . . . . . 
-    . . . . . . . . . . 
-    . . . . . . . . . . 
-    . . . . . . . . . . 
-    `, [myTiles.transparency16,myTiles.tile4,myTiles.tile1,myTiles.tile2,myTiles.tile8,myTiles.tile10,myTiles.tile12,myTiles.tile13,myTiles.tile14], TileScale.Sixteen))
-Runner_blue = sprites.create(img`
+tiles.setTilemap(tiles.createTilemap(hex`140010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000401010300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000040101010103000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000020000000002000000000000000000000200000000000000000000000000000000000000000000000000000000000000000000000000000000000401010103000000000800000000000000000000000000000000000005060700000000000000000000000000000000050606060700000000000101010101010101010106060606060101010101`, img`
+    . . . . . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . . . . . 
+    . . . 2 2 2 2 . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . . . . . 
+    . . . . . . . . 2 . . 2 2 2 2 2 2 . . . 
+    . . . . . . . . . . . . . . . . . . . . 
+    . . . . . . . 2 . . . . . . . . . . . . 
+    . . . . . 2 . . . . 2 . . . . . . . . . 
+    . 2 . . . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . . . . . 
+    . . . 2 2 2 2 2 . . . . 2 . . . . . . . 
+    . . . . . . . . . . . 2 2 2 . . . . . . 
+    . . . . . . . . . . 2 2 2 2 2 . . . . . 
+    2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+    `, [myTiles.transparency16,myTiles.tile4,myTiles.tile1,myTiles.tile2,myTiles.tile8,myTiles.tile3,myTiles.tile6,myTiles.tile9,myTiles.tile15], TileScale.Sixteen))
+let Runner_blue = sprites.create(img`
     . . . f f f f f . . . . . 
     . f f f f f f f f f . . . 
     . f f f f f f c f f f . . 
@@ -58,10 +41,15 @@ Runner_blue = sprites.create(img`
     . . . f f f f f f . . . . 
     . . . . f f f . . . . . . 
     `, SpriteKind.Player)
-Runner_blue.setPosition(16, 95)
+Runner_blue.setPosition(8, 95)
 scene.cameraFollowSprite(Runner_blue)
-Runner_blue.setFlag(SpriteFlag.StayInScreen, false)
+Runner_blue.setFlag(SpriteFlag.StayInScreen, true)
 controller.moveSprite(Runner_blue, 75, 0)
+game.onUpdateInterval(1000, function () {
+    if (controller.A.isPressed()) {
+        jump_limit += 1
+    }
+})
 game.onUpdateInterval(100, function () {
     if (controller.right.isPressed()) {
         Runner_blue.setImage(img`
@@ -103,7 +91,7 @@ game.onUpdateInterval(100, function () {
             . . . f f f . . . f f . . 
             `)
     }
-    if (controller.A.isPressed()) {
+    if (controller.A.isPressed() && jump_limit < 1) {
         Runner_blue.setVelocity(0, -150)
     } else {
         Runner_blue.setVelocity(0, 100)
@@ -128,7 +116,7 @@ game.onUpdateInterval(100, function () {
             . . . . f f f . . . . . . 
             `)
     }
-    if (jump_limit <= 1) {
-    	
+    if (jump_limit > 1) {
+        jump_limit = 0
     }
 })
